@@ -13,6 +13,9 @@
 #include "utlstring.h"
 #include "utlvector.h"
 #include "winlite.h"
+#include <stdio.h>
+extern __stdargs int vasprintf(char **ret,const char *format,va_list arg);
+
 
 //-----------------------------------------------------------------------------
 // Purpose: Helper: Find s substring
