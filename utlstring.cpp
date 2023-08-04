@@ -146,7 +146,9 @@ size_t CUtlString::FormatV( const char *pFormat, va_list args )
 #else
 
 	char *buf = NULL;
-	len = vasprintf( &buf, pFormat, args );
+	//len = vasprintf( &buf, pFormat, args );
+		len = vsnprintf( NULL, 0, pFormat, args );
+
 
 	// Len < 0 represents an overflow
 	if( buf )
@@ -193,7 +195,9 @@ size_t CUtlString::VAppendFormat( const char *pFormat, va_list args )
 
 #else
 	char *pstrFormatted = NULL;
-	len = vasprintf( &pstrFormatted, pFormat, args );
+	//len = vasprintf( &pstrFormatted, pFormat, args );
+		len = vsnprintf( pstrFormatted, len + 1, pFormat, args );
+
 #endif
 
 	// if we ended with a formatted string, append and free it
